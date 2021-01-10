@@ -13,7 +13,12 @@ app.set('view engine', 'pug');
 app.get('/', (req, res) => {
   res.render('index', {});
 });
-
+app.get('/form', (req, res) => {
+  res.render('form', {});
+});
+app.get('/track', (req, res) => {
+  res.render('track', {});
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
