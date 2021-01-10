@@ -23,12 +23,12 @@ app.get('/', (req, res) => {
   res.render('index', {});
 }); 
 app.get('/add', (req, res) => {
-  res.render('add', {});
+  res.render('add');
 });
 app.get('/track', (req, res) => {
   res.render('track', {});
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on port number ${port}`);
 });
