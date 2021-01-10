@@ -13,8 +13,8 @@ app.set('view engine', 'pug');
 app.get('/', (req, res) => {
   res.render('index', {});
 });
-app.get('/form', (req, res) => {
-  res.render('form', {});
+app.get('/add', (req, res) => {
+  res.render('add', {});
 });
 app.get('/track', (req, res) => {
   res.render('track', {});

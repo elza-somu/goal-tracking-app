@@ -1,37 +1,35 @@
 extends layout
 
 block content
-  main.container-fluid.main-body
-    .row.titlebar
-      .col-sm
-      .col-sm-1.dropdown
+  main.container.main-body
+  .row.titlebar
+    .col-sm
+    .row
+      form.d-flex.col-sm
+        input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
+        button.btn.btn-outline-success(type='submit') Search
+      .col-sm-2.dropdown
         button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
           | Filter
         ul.dropdown-menu(aria-labelledby='dropdownMenuButton')
           li
-            a.dropdown-item(href='#') Hashtag
-          li
-            a.dropdown-item(href='#') Time
-      .col-sm-1.dropdown
-        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
-          | Sort
-        ul.dropdown-menu(aria-labelledby='dropdownMenuButton')
-          li
             a.dropdown-item(href='#') Career
           li
-            a.dropdown-item(href='#') Health
+            a.dropdown-item(href='#') Fitness
           li
             a.dropdown-item(href='#') Finance
           li
             a.dropdown-item(href='#') Education
-    .items
-      ul.row
-        li.col-sm-1
-          i.far.fa-circle
-        li.col-sm-1.hidden
-          i.far.fa-check-circle
-        li.col-sm Learn React
-        li.col-sm 5:00
-        li.col-sm-1
-          i.fas.fa-trash
-    
+  .items
+    ul.row
+      li.col-sm-1
+        i.far.fa-circle
+      // <li class="col-sm-1 hidden"><i class="far fa-check-circle"></i></li>
+      li.col-sm
+        a(href='#' onclick='displayEdit') Learn React
+      li.col-sm-2 5:00
+      li.col-sm-1
+        i.fas.fa-trash
+    .displayEdit
+  .add
+    a.btn.btn-outline-info(href='#' role='button') Add Item
