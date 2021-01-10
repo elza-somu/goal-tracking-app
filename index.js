@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyparser = require('body-parser');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 5000;
 const path = require('path');
 
 // All middlewares
@@ -30,5 +30,5 @@ app.get('/track', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port number ${port}`);
+  console.log(`Server running on port ${port}`);
 });
