@@ -20,13 +20,13 @@ app.set('views', path.join(__dirname,'views'));
 
 
 app.get('/', (req, res) => {
-  res.render('index', {});
+  res.render('index');
 }); 
 app.get('/add', (req, res) => {
   res.render('add');
 });
 app.get('/track', (req, res) => {
-  res.render('track', {});
+  res.render('track');
 });
 
 app.listen(port, () => {
