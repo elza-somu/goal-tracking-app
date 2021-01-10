@@ -26,7 +26,7 @@ app.get('/add', (req, res) => {
   res.render('add');
 });
 app.get('/track', (req, res) => {
-  res.render('track', {});
+  res.render('track');
 });
 
 app.listen(port, () => {
