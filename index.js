@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyparser = require('body-parser');
+const router = require('./backend/routes/router');
 const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
@@ -18,16 +19,8 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname,'views'));
 
-
-app.get('/', (req, res) => {
-  res.render('index');
-}); 
-app.get('/add', (req, res) => {
-  res.render('add');
-});
-app.get('/track', (req, res) => {
-  res.render('track');
-});
+// load routers from router.js
+app.use('/',router);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
