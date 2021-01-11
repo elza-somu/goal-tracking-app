@@ -31,7 +31,9 @@ app.get('/', (req, res) => {
       time_on_task: 5
     }
   ];
-  res.render('index');
+  res.render('index',{
+    tasks:tasks
+  });
 }); 
 app.get('/add', (req, res) => {
   res.render('add');

@@ -32,9 +32,10 @@ block content
           li.col-sm-1
       .items
         ul.row
-          li.col-sm Learn React
-          li.col-sm-2 5:00
-          li.col-sm-1
-            i.fas.fa-trash
+          each task, i in tasks
+            li.col-sm=task.title
+            li.col-sm-2=task.time_on_task
+            li.col-sm-1
+              i.fas.fa-trash
       .add
         a.btn.btn-outline-info(href='/add' role='button') Add Item
