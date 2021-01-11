@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const bodyparser = require('body-parser');
 const router = require('./backend/routes/router');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const path = require('path');
 
 // All middlewares
@@ -23,5 +23,5 @@ app.set('views', path.join(__dirname,'views'));
 app.use('/',router);
 
 app.listen(port, () => {
-  console.log(`Server running on port number ${port}`);
+  console.log(`Server running on port ${port}`);
 });
