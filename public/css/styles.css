@@ -16,10 +16,21 @@ footer {
 footer a {
   margin-bottom: 20px;
 }
+
+ul {
+  padding: 0;
+}
+
+.sort li,
 .items li {
   list-style: none;
   margin-top: 10px;
 }
+
+.sort {
+  border-bottom: 1px solid gray;
+}
+
 .add {
   text-align: center;
 }
@@ -28,7 +39,8 @@ footer a {
   text-align: center;
 }
 .container,
-.main-body {
+.main-body,
+.add-item {
   max-width: 80%;
 }
 
@@ -38,6 +50,7 @@ footer a {
 
 .titlebar {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .hidden {
