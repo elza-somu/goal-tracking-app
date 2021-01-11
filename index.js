@@ -20,6 +20,17 @@ app.set('views', path.join(__dirname,'views'));
 
 
 app.get('/', (req, res) => {
+  let tasks =[
+    {
+      title: 'Learn to Code',
+      id: 1,
+      hashtag : 'Programming',
+      date_created : '2020-Dec-06',
+      date_completed : '2020-Dec-06',
+      completed : true,
+      time_on_task: 5
+    }
+  ];
   res.render('index');
 }); 
 app.get('/add', (req, res) => {
