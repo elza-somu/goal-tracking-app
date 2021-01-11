@@ -1,9 +1,17 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyparser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
+
+mongoose.connect('mongodb://localhost/tasks');
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("connect to db")
+});
 
 // All middlewares
 // Public Folders route
