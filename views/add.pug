@@ -3,7 +3,7 @@ extends layout
 block content
   main
     .container.add-item
-      form.row.g-3
+      form.row.g-3(method='POST', action='/add')
         .col-8
           label.form-label(for='inputName') Name
           input#inputName.form-control(type='text')

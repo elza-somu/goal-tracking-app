@@ -17,8 +17,8 @@ exports.addItem = (req, res) => {
     res.render('add');
 }
 
-exports.editItem = (req, res) => {
-    res.render('edit');
+exports.trackItem = (req, res) => {
+    res.render('track');
 }
 
 exports.deleteItem = (req, res) => {
