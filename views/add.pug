@@ -5,22 +5,22 @@ block content
     .container.add-item
       form.row.g-3(method='POST', action='/add')
         .col-8
-          label.form-label(for='inputName') Name
-          input#inputName.form-control(type='text')
+          label.form-label Title
+          input#inputName.form-control(name='title', type='text')
         .row
           .col-8
             label.form-label(for='inputGoal') Goals
-            input#inputGoal.form-control(type='textarea' placeholder='I would like to...')
+            textarea#inputGoal.form-control(name='description' placeholder='I would like to...')
         .form-group.row.date
           label.col-2.col-form-label(for='startDate')  Start Date
           .col-6
-            input#startDate.form-control(type='date' value='2011-08-19')
+            input#startDate.form-control(name='start_date' type='date' value='2011-08-19')
         .form-group.row.date
           label.col-2.col-form-label(for='endDate')  End Date
           .col-6
-            input#endDate.form-control(type='date' value='2011-08-24')
+            input#endDate.form-control(name='end_date' type='date' value='2011-08-24')
         .col-md-4
-          label.form-label(for='hashtag') Hashtags
+          label.form-label(name='hashtag' for='hashtag') Hashtags
           select#hashtag.form-select
             option(selected='') Select
             option Career
@@ -28,4 +28,4 @@ block content
             option Finance
             option Education
         .col-12
-          button.btn.btn-outline-info(type='submit') Add Item
+          input.btn.btn-outline-info(type='submit', value='Add Item') 
