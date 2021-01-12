@@ -8,9 +8,9 @@ Root route, method: GET
 route.get('/', services.homeRoute); 
 route.get('/add', services.addItem);
 route.post('/add', services.add);
-route.post('/view/:title',services.viewItem);
-route.get('/track/:title', services.trackItem);
-route.get('/delete/:title', services.deleteItem);
+route.get('/view/:id',services.viewItem);
+route.get('/track/:id', services.trackItem);
+route.get('/delete/:id', services.deleteItem);
 
 
 module.exports = route;

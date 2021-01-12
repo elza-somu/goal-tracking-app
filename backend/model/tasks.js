@@ -22,7 +22,15 @@ let taskSchema = mongoose.Schema({
   },
   completed:{
     type:Boolean
+  },
+  hashtag:{
+    type:String,
+    required:true
   }
+});
+
+taskSchema.virtual('taskId').get(function() {
+  return this._id;
 });
 
 const Task = mongoose.model('Task', taskSchema);
