@@ -7,7 +7,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 
-// parse application/x-www-form-urlencoded
+// parse application
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
