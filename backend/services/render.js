@@ -27,6 +27,8 @@ exports.add = (req,res)=>{
         task.description = req.body.description;
         task.start_date = start_date;
         task.end_date = end_date;
+        console.log("Hashtag -> "+req.body.hashtag);
+        task.hashtag = req.body.hashtag;
 
         //Have to make this a seperate function to calculate hours_spend
         const diffTime = Math.abs(new Date(end_date) - new Date(start_date));
@@ -85,15 +87,12 @@ exports.trackItem = (req, res) => {
 //Delete item based on task id
 exports.deleteItem = (req, res) => {
     const id = req.params.id;
-    Task.findByIdAndDelete(id)
-    .then(data=>{
-        if(!data){
-            res.status(404).send({message:'Cannot delete task'});
-        }else{
-            res.render('delete');
-        }
-    })
-    .catch(err =>{
-        res.status(500).send({message:'Error deleting task information'});
-    })
+    Task.findByIdAndRemove(id, (err, todo) => {
+        if (err) return res.status(500).send(err);
+        const response = {
+            message: "Todo successfully deleted",
+            id: todo._id
+        };
+        return res.redirect('/');
+    });
 }
