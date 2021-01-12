@@ -1,17 +1,15 @@
+const {Task} = require('../model/tasks');
+
 exports.homeRoute = (req,res) =>{
-    let tasks =[
-    {
-    title: 'Learn to Code',
-    id: 1,
-    hashtag : 'Programming',
-    date_created : '2020-Dec-06',
-    date_completed : '2020-Dec-06',
-    completed : true,
-    time_on_task: 5
-    }
-    ];
-    res.render('index', {
-    tasks:tasks
+    Task.find({}, function(err, tasks){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('index', {
+            tasks:tasks
+            
+            });
+        }
     });
 }
 

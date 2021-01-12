@@ -4,7 +4,7 @@
         "id": "1",
         "hashtag": "Programming",
         "date_created": "2020-Dec-06",
-        "date_completed": "2020-Dec-06",
+        "end_date": "2020-Dec-06",
         "time_on_task": "5",
         "completed": true
       },
