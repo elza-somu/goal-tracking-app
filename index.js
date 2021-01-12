@@ -1,23 +1,31 @@
 const express = require('express');
 const morgan = require('morgan');
-const bodyparser = require('body-parser');
 const router = require('./backend/routes/router');
 const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
+const mongoose = require('mongoose');
+
+// connecting mongoose to database
+mongoose.connect('mongodb://localhost/vtracker', {useNewUrlParser: true, useUnifiedTopology: true});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    console.log("connect to db")
+});
 
 // All middlewares
 // Public Folders route
 app.use(express.static(path.join(__dirname, 'public')));
 // To log server req/response
 app.use(morgan('tiny'));
-// parse request using body-parser to read the params from request
-app.use(bodyparser.urlencoded({extended:true}));
+
 
 
 // Load view engine
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname,'views'));
+
 
 // load routers from router.js
 app.use('/',router);
