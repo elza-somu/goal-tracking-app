@@ -9,7 +9,7 @@ let taskSchema = mongoose.Schema({
   description:{
     type: String
   },
-  date_created:{
+  start_date:{
     type: String,
     required: true
   },

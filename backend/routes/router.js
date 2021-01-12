@@ -10,5 +10,7 @@ route.get('/add', services.addItem);
 route.get('/track', services.trackItem);
 route.get('/delete-item', services.deleteItem);
 
+route.post('/add', services.add)
+
 module.exports = route;
   
