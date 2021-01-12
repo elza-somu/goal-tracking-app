@@ -25,7 +25,7 @@ let taskSchema = mongoose.Schema({
   },
   hashtag:{
     type:String,
-    required:true
+    
   }
 });
 
