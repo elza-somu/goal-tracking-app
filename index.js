@@ -1,10 +1,12 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const morgan = require('morgan');
 const router = require('./backend/routes/router');
+const connectDB = require('./backend/database/connection');
 const app = express();
+dotenv.config({path:'config.env'});
 const port = process.env.PORT || 3000;
 const path = require('path');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 
 // parse application/x-www-form-urlencoded
@@ -13,14 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-// connecting mongoose to database
-mongoose.connect('mongodb+srv://elza:@cluster0.oxzbn.mongodb.net/vtracker?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    console.log("connect to db")
-});
+//connection mongodb
+connectDB()
 
 // All middlewares
 // Public Folders route
