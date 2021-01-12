@@ -33,6 +33,6 @@ app.set('views', path.join(__dirname,'views'));
 app.use('/',router);
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT||port, () => {
   console.log(`Server running on port ${port}`);
 });
