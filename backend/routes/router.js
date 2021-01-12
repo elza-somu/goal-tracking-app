@@ -1,6 +1,7 @@
 const express = require('express');
 const route = express.Router();
-const services = require('../services/render')
+const services = require('../services/render');
+const controller = require('../controller/controller');
 /* 
 Root route, method: GET
 */
