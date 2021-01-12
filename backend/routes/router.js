@@ -7,10 +7,11 @@ Root route, method: GET
 */
 route.get('/', services.homeRoute); 
 route.get('/add', services.addItem);
-route.get('/track', services.trackItem);
-route.get('/delete-item', services.deleteItem);
+route.post('/add', services.add);
+route.post('/view/:title',services.viewItem);
+route.get('/track/:title', services.trackItem);
+route.get('/delete/:title', services.deleteItem);
 
-route.post('/add', services.add)
 
 module.exports = route;
   
