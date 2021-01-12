@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // connecting mongoose to database
-mongoose.connect('mongodb+srv://elza_123:123elza456@cluster0.oxzbn.mongodb.net/vtracker?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://elza:@cluster0.oxzbn.mongodb.net/vtracker?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
