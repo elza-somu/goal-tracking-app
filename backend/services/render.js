@@ -21,19 +21,20 @@ exports.addItem = (req, res) => {
 // Adding post request from Add Item page
 exports.add = (req,res)=>{
     let task = new Task();
+        var start_date = req.body.start_date;
+        var end_date = req.body.end_date;
         task.title = req.body.title;
         task.description = req.body.description;
-        task.start_date = req.body.start_date;
-        task.end_date = req.body.end_date;
+        task.start_date = start_date;
+        task.end_date = end_date;
 
         //Have to make this a seperate function to calculate hours_spend
-        console.log(end_date);
-        var seconds = Math.floor((Date - (start_date))/1000);
+        const diffTime = Math.abs(new Date(end_date) - new Date(start_date));
+        var seconds = Math.floor(diffTime/1000);
         var minutes = Math.floor(seconds/60);
         var hours = Math.floor(minutes/60);
         var days = Math.floor(hours/24);
-        task.hours_spend = hours-(days*24);
-        console.log(task.hours_spend);
+        task.hours_spend = hours;
         //create seperate function end
         task.save(function(err){
             if(err){
@@ -43,24 +44,21 @@ exports.add = (req,res)=>{
             res.redirect('/')
         }
         })
-        
 }
 
 //To View the Single Item
 exports.viewItem = (req, res) =>{
-    if(req.query.id){
-        const id = req.query.id;
-        Task.findById(id)
-            .then(data => {
-                if(!data){
-                    res.status(404).send({message:"Task not found"})
-                }else{
-                    res.render('view',{task:task})
-                }
-            })
-            .catch(err =>{
-                res.status(500).send({message: "Couldn't retrieve Task"});
-            })
+    if(req.params.id){
+        const id = req.params.id;
+        Task.findById(id, function(err, tasks){
+            if(err){
+                console.log(err);
+            } else {
+                res.render('view', {
+                task:tasks
+                });
+            }
+        });
     }
 }
 
@@ -70,8 +68,8 @@ exports.trackItem = (req, res) => {
         return res
         .status(400).send({message:"Data is empty"})
     }
-    const id = req.params.id;
-    Task.findByIdAndUpdate(id, req.body,{useFindAndModify:false})
+    const id = req.params.taskId;
+    Task.findByIdAndUpdate(taskId, req.body,{useFindAndModify:false})
         .then(data =>{
             if(!data){
                 res.status(404).send({message:'Task not found'});

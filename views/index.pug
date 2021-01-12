@@ -33,7 +33,7 @@ block content
       .items
         ul.row
           each task, i in tasks
-            a(href='/view/'+task.title).li.col-sm-9=task.title
+            a(href='/view/'+task.taskId).li.col-sm-9=task.title
             li.col-sm-2=task.hours_spend
             li.col-sm-1
               i.fas.fa-trash
