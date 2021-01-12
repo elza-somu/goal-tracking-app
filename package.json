@@ -2,7 +2,7 @@
   "name": "goal-tracking-app",
   "version": "1.0.0",
   "description": "Tracking App to document your goals",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon"
   },
