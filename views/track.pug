@@ -12,13 +12,17 @@ block content
             label.form-label(for='inputGoal') Goals
             input#inputGoal.form-control(type='textarea' value = task.description placeholder='I would like to...')
         .form-group.row.date
-          label.col-2.col-form-label(for='start-time' value = task.start_date) Start Date
+          label.col-2.col-form-label(for='start-time') Start Date
           .col-6
-            input#start-time.form-control(type='datetime-local')
+            input#inputName.form-control(type='text' value=task.start_date)
         .form-group.row.date
-          label.col-2.col-form-label(for='end-time' value = task.end_date) End Date
+          label.col-2.col-form-label(for='end-time') End Date
           .col-6
-            input#end-time.form-control(type='datetime-local')
+            input#inputName.form-control(type='text' value=task.end_date)
+        .form-group.row.date
+          label.col-2.col-form-label(for='hours_spend') Hours Spent
+          .col-6
+            input#inputName.form-control(type='text')
         .col-md-4
           label.form-label(for='hashtag' value= task.hashtag) Hashtags
           select#hashtag.form-select
