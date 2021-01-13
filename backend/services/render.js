@@ -71,17 +71,19 @@ exports.trackItem = (req, res) => {
         .status(400).send({message:"Data is empty"})
     }
     const id = req.params.taskId;
-    Task.findByIdAndUpdate(taskId, req.body,{useFindAndModify:false})
-        .then(data =>{
-            if(!data){
-                res.status(404).send({message:'Task not found'});
-            }else{
-                res.render('track',{data});
-            }
-        })
-        .catch(err => {
-            res.status(500).send({message:"Error updating task information"});
-        });
+    Task.findByIdAndUpdate(
+        // the id of the item to find
+        req.params.taskId,
+        req.body,
+        {new: true},
+        (err, task) => {
+        // Handle any possible database errors
+            if (err) return res.status(500).send(err);
+            res.render('track', {
+                task:task
+                });
+        }
+    )
 }
 
 //Delete item based on task id
