@@ -3,24 +3,30 @@ extends layout
 block content
   main
     .container.add-item
-      form.row.g-3(method='POST', action='/add')
+      form.row.g-3.needs-validation(method='POST', action='/add' novalidate) 
         .col-8
           label.form-label Title
-          input#inputName.form-control(name='title', type='text')
+          input#inputName.form-control(name='title', type='text' required)
+          .invalid-feedback
+            Please provide a title.
         .row
           .col-8
             label.form-label(for='inputGoal') Goals
             textarea#inputGoal.form-control(name='description' placeholder='I would like to...')
         .form-group.row.date
-          label.col-2.col-form-label(for='startDate')  Start Date
+          label.col-2.col-form-label(for='startDate' )  Start Date
           .col-6
-            input#startDate.form-control(name='start_date' type='date')
+            input#startDate.form-control(name='start_date' type='date' required)
+            .invalid-feedback
+            Please provide a Starting date
         .form-group.row.date
-          label.col-2.col-form-label(for='endDate')  End Date
+          label.col-2.col-form-label(for='endDate' )  End Date
           .col-6
-            input#endDate.form-control(name='end_date' type='date')
+            input#endDate.form-control(name='end_date' type='date' required)
+            .invalid-feedback
+            Please provide a End Date
         .col-md-4
-          label.form-label(name='hashtag' for='hashtag') Hashtags
+          label.form-label(name='hashtag' for='hashtag' ) Hashtags
           select#hashtag.form-select
             option(selected='') Select
             option Career

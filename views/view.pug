@@ -1,11 +1,18 @@
-doctype html
-html
-  include layout
+extends layout
+
 block content
-h1 #{task.title}
-h3 #{task.description}
-h3 #{task.hashtag}
-h3 #{task.start_date}
-h3 #{task.end_date}
-h3 #{task.completed}
-h3 #{task.hours_spend}
+  .container
+    h2.view-title #{task.title}
+    ul.row.view-item
+      li.col-sm-12 Title : 
+        span #{task.title}
+      li.col-sm-12 Goal : 
+        span #{task.description}
+      li.col-sm-12 Start Date : 
+        span #{task.hashtag}
+      li.col-sm-12 End Date : 
+        span #{task.end_date}
+      li.col-sm-12 Completed : 
+        span #{task.completed}
+      li.col-sm-12 Time Spend on Task : 
+        span #{task.hours_spend}

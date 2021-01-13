@@ -33,10 +33,22 @@ block content
       .items
         ul.row
           each task, i in tasks
-            a(href='/view/'+task.taskId).li.col-sm-9=task.title
+            li.col-sm-8=task.title
             li.col-sm-2=task.hours_spend
             li.col-sm-1
               a(href='/delete/'+task.taskId)
                 i.fas.fa-trash
-      .add
-        a.btn.btn-outline-info(href='/add' role='button') Add Item
+            li.col-sm-1
+              .dropdown
+                // Trigger
+                a#dropdownMenu2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                  i.fas.fa-ellipsis-v
+                // Menu
+                .dropdown-menu.dropdown-primary
+                  a.dropdown-item(href='/view/'+task.taskId)
+                    |   View
+                  a.dropdown-item(href='/track/'+task.taskId)
+                    |   Track
+
+          .add
+            a.btn.btn-outline-info(href='/add' role='button') Add Item
