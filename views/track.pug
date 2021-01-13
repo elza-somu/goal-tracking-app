@@ -3,9 +3,9 @@ extends layout
 block content
   main
     .container.track-item
-      form.row.g-3
+      form.row.g-3(method='POST', action='/track/'+taskId)
         .col-8
-          label.form-label(for='inputName') Name
+          label.form-label(for='inputName') Name 
           input#inputName.form-control(type='text')
         .row
           .col-8
