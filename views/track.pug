@@ -3,26 +3,26 @@ extends layout
 block content
   main
     .container.track-item
-      form.row.g-3(method='POST', action='/track/'+taskId)
+      form.row.g-3(method='POST', action='/update/'+task.taskId)
         .col-8
           label.form-label(for='inputName') Name 
-          input#inputName.form-control(type='text')
+          input#inputName.form-control(type='text' value=task.title)
         .row
           .col-8
             label.form-label(for='inputGoal') Goals
-            input#inputGoal.form-control(type='textarea' placeholder='I would like to...')
+            input#inputGoal.form-control(type='textarea' value = task.description placeholder='I would like to...')
         .form-group.row.date
-          label.col-2.col-form-label(for='start-time') Date and time
+          label.col-2.col-form-label(for='start-time' value = task.start_date) Start Date
           .col-6
             input#start-time.form-control(type='datetime-local')
         .form-group.row.date
-          label.col-2.col-form-label(for='end-time') Date and time
+          label.col-2.col-form-label(for='end-time' value = task.end_date) End Date
           .col-6
             input#end-time.form-control(type='datetime-local')
         .col-md-4
-          label.form-label(for='hashtag') Hashtags
+          label.form-label(for='hashtag' value= task.hashtag) Hashtags
           select#hashtag.form-select
-            option(selected='') Select
+            option(selected='task.hashtag') Select
             option Career
             option Fitness
             option Finance
