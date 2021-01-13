@@ -5,12 +5,13 @@ footer p {
 }
 
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 5px;
+  position: absolute;
+  bottom: 10px;
   width: 100%;
+  height: 60px;
+  line-height: 60px;
+  padding-left: 30px;
   color: #2a6d6d;
-  text-align: center;
 }
 
 footer a {
@@ -89,4 +90,20 @@ a {
 .track-item,
 .view-title {
   margin-top: 40px;
+}
+
+.red {
+  border-left: 4px solid rgb(167, 10, 10);
+}
+
+.green {
+  border-left: 4px solid rgb(4, 163, 4);
+}
+
+.blue {
+  border-left: 4px solid rgb(42, 182, 242);
+}
+
+.yellow {
+  border-left: 4px solid rgb(240, 240, 44);
 }
