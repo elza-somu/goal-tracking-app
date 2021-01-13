@@ -16,5 +16,7 @@ block content
         span #{task.completed}
       li.col-sm-12 Time Spend on Task : 
         span #{task.hours_spend}
+      li.col-sm-12 Hastag : 
+        span #{task.hashtag}
     .track
       a.btn.btn-outline-info(href='/track/'+task.taskId role='button') Track Item
