@@ -28,7 +28,6 @@ exports.add = (req,res)=>{
         task.description = req.body.description;
         task.start_date = start_date;
         task.end_date = end_date;
-        console.log("Hashtag -> "+req.body.hashtag);
         task.hashtag = req.body.hashtag;
 
         //Have to make this a seperate function to calculate hours_spend
@@ -37,7 +36,7 @@ exports.add = (req,res)=>{
         var minutes = Math.floor(seconds/60);
         var hours = Math.floor(minutes/60);
         var days = Math.floor(hours/24);
-        task.hours_spend = hours;
+        //task.hours_spend = hours;
         //create seperate function end
         task.save(function(err){
             if(err){
@@ -81,6 +80,7 @@ exports.track = (req, res) =>{
     }
 }
 
+
 //Track Item page for the task id
 exports.trackItem = (req, res) => {
     console.log("Inside Track Item");
@@ -88,18 +88,21 @@ exports.trackItem = (req, res) => {
         return res
         .status(400).send({message:"Data is empty"})
     }
-    const id = req.params.taskId;
-    Task.findByIdAndUpdate(
-        // the id of the item to find
-        req.params.id,
-        req.body,
-        {new: true},
-        (err, task) => {
-        // Handle any possible database errors
-            if (err) return res.status(500).send(err);
-            res.redirect('/');
-        }
-    )
+    Task.findById( req.params.id, function ( err, task ){
+        task.title = req.body.title;
+        task.description = req.body.description;
+        task.start_date = req.body.start_date;
+        task.end_date = req.body.end_date;
+        task.hours_spend = task.hours_spend + (Number(req.body.hours_spend));
+        task.hashtag = req.body.hashtag;
+        task.save( function ( err, tasks){
+            if(err){
+                console.log(err);
+            }
+            console.log(tasks);
+          res.redirect( '/');
+        });
+      });
 }
 
 //Delete item based on task id
