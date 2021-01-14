@@ -5,9 +5,9 @@ block content
     .container.main-body
       .row.titlebar
         .row
-          form.d-flex.col-sm
-            input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
-            button.btn.btn-outline-success(type='submit') Search
+          form.d-flex.col-sm(method='GET' action='/')
+            input.form-control.me-2(type='text' placeholder='Search' aria-label='Search')
+            input.btn.btn-outline-success(type='submit' value='Search')
           .col-sm-2.dropdown
             button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
               | Filter
@@ -41,10 +41,8 @@ block content
                     i.fas.fa-trash
                 li.col-sm-1
                   .dropdown
-                    // Trigger
                     a#dropdownMenu2(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                       i.fas.fa-ellipsis-v
-                    // Menu
                     .dropdown-menu.dropdown-primary
                       a.dropdown-item(href='/view/'+task.taskId)
                         |   View
