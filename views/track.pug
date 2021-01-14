@@ -3,25 +3,38 @@ extends layout
 block content
   main
     .container.track-item
-      form.row.g-3(method='POST', action='/track/'+taskId)
+      form.row.g-3(method='PUT', action='/update/'+task.taskId)
         .col-8
           label.form-label(for='inputName') Name 
-          input#inputName.form-control(type='text')
+          input#inputName.form-control(type='text' value=task.title)
         .row
           .col-8
             label.form-label(for='inputGoal') Goals
-            input#inputGoal.form-control(type='textarea' placeholder='I would like to...')
+            input#inputGoal.form-control(type='textarea' value = task.description placeholder='I would like to...')
         .form-group.row.date
-          label.col-2.col-form-label(for='hours_spend') Hours Spend
+          label.col-2.col-form-label(for='start-time') Start Date
           .col-6
-            input#start-time.form-control(type='number')
+            input#inputName.form-control(type='text' value=task.start_date)
+        .form-group.row.date
+          label.col-2.col-form-label(for='end-time') End Date
+          .col-6
+            input#inputName.form-control(type='text' value=task.end_date)
+        .form-group.row.date
+          label.col-2.col-form-label(for='hours_spend') Hours Spent
+          .col-6
+            input#inputName.form-control(type='text')
         .col-md-4
           label.form-label(for='hashtag') Hashtags
           select#hashtag.form-select
-            option(selected='') Select
-            option Career
-            option Fitness
-            option Finance
-            option Education
+            option(value = "Career") Career
+            option(value = "Fitness") Fitness
+            option(value = "Finance") Finance
+            option(value = "Education") Education
+
+        script.
+          var options = document.getElementById('hashtag').options;
+          for (i=0; i < pOptions.length; i++) {
+            if (options[i].value == task.hashtag) options[i].selected = true;
+         }
         .col-12
           button.btn.btn-outline-info(type='submit') Track Item

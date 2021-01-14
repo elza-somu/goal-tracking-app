@@ -2,21 +2,21 @@ extends layout
 
 block content
   .container
-    h2.view-title #{task.title}
+    h2 View Item
     ul.row.view-item
       li.col-sm-12 Title : 
-        span #{task.title}
+        p #{task.title}
       li.col-sm-12 Goal : 
-        span #{task.description}
-      li.col-sm-12 Start Date : 
-        span #{task.hashtag}
-      li.col-sm-12 End Date : 
-        span #{task.end_date}
+        p #{task.description}
+      li.col-sm-6 Start Date : 
+        p #{task.start_date}
+      li.col-sm-6 End Date : 
+        p #{task.end_date}
       li.col-sm-12 Completed : 
-        span #{task.completed}
-      li.col-sm-12 Time Spend on Task : 
-        span #{task.hours_spend}
-      li.col-sm-12 Hastag : 
-        span #{task.hashtag}
+        p #{task.completed}
+      li.col-sm-6 Time Spend on Task : 
+        p #{task.hours_spend}
+      li.col-sm-6 Hastag : 
+        p #{task.hashtag}
     .track
       a.btn.btn-outline-info(href='/track/'+task.taskId role='button') Track Item

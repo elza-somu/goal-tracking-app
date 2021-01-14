@@ -5,7 +5,8 @@ exports.homeRoute = (req,res) =>{
     Task.find({}, function(err, tasks){
         if(err){
             console.log(err);
-        } else {
+        } else {    
+            
             res.render('index', {
             tasks:tasks 
             });
@@ -64,8 +65,25 @@ exports.viewItem = (req, res) =>{
     }
 }
 
+//To track and populate item the Single Item
+exports.track = (req, res) =>{
+    if(req.params.id){
+        const id = req.params.id;
+        Task.findById(id, function(err, tasks){
+            if(err){
+                console.log(err);
+            } else {
+                res.render('track', {
+                task:tasks
+                });
+            }
+        });
+    }
+}
+
 //Track Item page for the task id
 exports.trackItem = (req, res) => {
+    console.log("Inside Track Item");
     if(!req.body){
         return res
         .status(400).send({message:"Data is empty"})
@@ -73,15 +91,13 @@ exports.trackItem = (req, res) => {
     const id = req.params.taskId;
     Task.findByIdAndUpdate(
         // the id of the item to find
-        req.params.taskId,
+        req.params.id,
         req.body,
         {new: true},
         (err, task) => {
         // Handle any possible database errors
             if (err) return res.status(500).send(err);
-            res.render('track', {
-                task:task
-                });
+            res.redirect('/');
         }
     )
 }
