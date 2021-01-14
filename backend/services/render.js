@@ -93,6 +93,7 @@ exports.trackItem = (req, res) => {
         task.description = req.body.description;
         task.start_date = req.body.start_date;
         task.end_date = req.body.end_date;
+        console.log(req.body.hours_spend);
         task.hours_spend = task.hours_spend + (Number(req.body.hours_spend));
         task.hashtag = req.body.hashtag;
         task.save( function ( err, tasks){
