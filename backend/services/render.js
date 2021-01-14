@@ -43,6 +43,7 @@ exports.add = (req,res)=>{
         task.start_date = start_date;
         task.end_date = end_date;
         task.hashtag = req.body.hashtag;
+        
 
         //Have to make this a seperate function to calculate hours_spend
         const diffTime = Math.abs(new Date(end_date) - new Date(start_date));
