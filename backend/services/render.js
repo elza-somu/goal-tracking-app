@@ -2,16 +2,30 @@ const {Task} = require('../model/tasks');
 
 //Index page display with all the tasks
 exports.homeRoute = (req,res) =>{
-    Task.find({}, function(err, tasks){
-        if(err){
-            console.log(err);
-        } else {    
-            
-            res.render('index', {
-            tasks:tasks 
-            });
-        }
-    });
+    if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+
+        Task.find({title: regex}, function(err, tasks){
+            if(err){
+                console.log(err);
+            } else {    
+                res.render('index', {
+                tasks:tasks 
+                });
+            }
+        });
+    }else{
+        Task.find({}, function(err, tasks){
+            if(err){
+                console.log(err);
+            } else {    
+                res.render('index', {
+                tasks:tasks 
+                });
+            }
+        });
+
+    }
 }
 
 //Render Add items page
@@ -100,9 +114,9 @@ exports.trackItem = (req, res) => {
                 console.log(err);
             }
             console.log(tasks);
-          res.redirect( '/');
+            res.redirect( '/');
         });
-      });
+    });
 }
 
 //Delete item based on task id
@@ -117,3 +131,7 @@ exports.deleteItem = (req, res) => {
         return res.redirect('/');
     });
 }
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
