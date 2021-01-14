@@ -18,7 +18,8 @@ let taskSchema = mongoose.Schema({
     required: true
   },
   hours_spend : {
-    type:Number
+    type:Number,
+    default:0
   },
   completed:{
     type:Boolean
