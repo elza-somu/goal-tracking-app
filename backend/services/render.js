@@ -5,7 +5,8 @@ exports.homeRoute = (req,res) =>{
     Task.find({}, function(err, tasks){
         if(err){
             console.log(err);
-        } else {
+        } else {    
+            
             res.render('index', {
             tasks:tasks 
             });
