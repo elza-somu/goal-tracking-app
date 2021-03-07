@@ -5,37 +5,21 @@ block content
     .container.main-body
       .row.titlebar
         .row
-          form.d-flex.col-sm(method='GET' action='/')
-            input.form-control.me-2(type='text' placeholder='Search' aria-label='Search')
-            input.btn.btn-outline-success(type='submit' value='Search')
-          .col-sm-2.dropdown
-            button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
-              | Filter
-            ul.dropdown-menu(aria-labelledby='dropdownMenuButton')
-              li
-                a.dropdown-item(href='#') Career
-              li
-                a.dropdown-item(href='#') Fitness
-              li
-                a.dropdown-item(href='#') Finance
-              li
-                a.dropdown-item(href='#') Education
-
       .sort
         ul.row
-          li.col-sm
+          li.col-
             | Title 
-            i.fas.fa-sort
-          li.col-sm-2
+            
+          li.col-2.col-sm-3.col-lg-2
             | Time Spend 
-            i.fas.fa-sort
-          li.col-sm-2
+          
+          li.col-sm-2.col-lg-2
       .items
           each task, i in tasks
             if task.hashtag==='Career'
               ul.row.red
                 li.col-sm=task.title
-                li.col-sm-2=task.hours_spend
+                li.col-1.col-sm-2=task.hours_spend
                 li.col-sm-1
                   a(href='/delete/'+task.taskId)
                     i.fas.fa-trash
